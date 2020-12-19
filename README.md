@@ -1,5 +1,7 @@
 # currying-for-templates
 
+Fichero único que proporciona la metafunción `hgs::curry` para currificar metafunciones. 
+
 ## Instalación
 
 Sólo tienes que incluir el fichero "currytemp.h" a tu proyecto.
