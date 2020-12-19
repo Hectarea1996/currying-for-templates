@@ -67,5 +67,29 @@ using type = func::type<t1,t2>;
 
 La diferencia crucial entre las dos metafunciones no es la forma en la que se usan, sino en que una metafunción normal es un 'template struct' y la metafuncion perezosa es un 'struct'. Fíjate que cualquiera de los dos tipos de metafunciones reciben como parámetro un tipo de dato, es decir, un class o un struct. Por tanto, no podemos pasar como argumento otra metafunción normal, pero sí otra metafunción perezosa. Esto nos abre paso a la programación funcional y el uso de metafunciones de [orden superior](https://es.wikipedia.org/wiki/Funci%C3%B3n_de_orden_superior).
 
+Quizás en este momento has recordado que podemos crear metafunciones normales que reciben como argumento un 'template struct':
+
+```C++
+template<template<typename> typename T>
+struct func{ //... }
+```
+
+El problema surge cuando debemos indicarle a C++ qué queremos retornar. Una metafunción currificada debería devolver una metafunción normal (un 'template struct') si no le hemos proporcionado sufientes argumentos, o el resultado (un tipo de dato, un struct):
+
+```C++
+/// Posible funcion curry
+template<template<typename...> typename TS>
+struct curry{
+   // Opcion 1
+   using type = typename ...
+   // Opcion 2
+   using type = template ...
+}
+```
+
+Pero claro, necesitamos contemplar las dos opciones a la vez. Algo imposible para lo que buscamos. 
+
+> Es posible crear una metafuncion curry que sí contemple estas dos opciones, pero perderíamos la opción de proporcionar varios argumentos a la metafuncion resultante.
+
 
 
