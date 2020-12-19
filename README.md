@@ -12,16 +12,16 @@ Esta librería permite currificar de forma sencilla metafunciones en C++ que ace
 template<int k>
 using int_constant = std::integral_constant<int,k>;
 
-/// Metafuncion para sumar dos enteros
+/// Metafuncion para sumar tres enteros
 template<typename N, typename M, typename P>
 struct suma_triple : int_constant< N::value+M::value+P::value >;
 
 /// Currificamos la metafuncion suma
-using suma_c = hgs::curry_t<suma>;
+using suma_triple_c = hgs::curry_t<suma_triple>;
 
 
 /// Ejemplo de uso
-using suma5_c = suma_c::type< int_constant<2> , int_constant<3> >;
+using suma5_c = suma_triple_c::type< int_constant<2> , int_constant<3> >;
 
 /**
 *   Observa que suma_c no es una metafuncion como tal.
@@ -31,7 +31,7 @@ using suma5_c = suma_c::type< int_constant<2> , int_constant<3> >;
 int main(){
 
    // Sumamos 5 a int_constant<37> y despues obtenemos el entero.
-   std::cout << suma1_c::type<int_constant<37>>::value << std::endl;
+   std::cout << suma5_c::type<int_constant<37>>::value << std::endl;
    
    return 0;
 
