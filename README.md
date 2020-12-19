@@ -93,7 +93,7 @@ Pero claro, necesitamos contemplar las dos opciones a la vez. Algo imposible par
 
 ## Ejemplo
 
-En el ejemplo se usa el tipo int_constant usado más arriba y un tipo de dato 'lista de tipos'. Se muestra la implementación de la función de [orden superior](https://es.wikipedia.org/wiki/Funci%C3%B3n_de_orden_superior) map_list y la usaremos para relizar una operación sobre cada tipo de la lista.
+En el ejemplo se usa el tipo `int_constant` usado más arriba y un tipo de dato `lista`. Se muestra la implementación de la función de [orden superior](https://es.wikipedia.org/wiki/Funci%C3%B3n_de_orden_superior) `map_list` y la usaremos para relizar una operación sobre cada tipo de la lista.
 
 ```C++
 #include <type_traits>  // Para poder usar std::integral_constant
