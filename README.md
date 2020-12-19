@@ -16,7 +16,7 @@ using int_constant = std::integral_constant<int,k>;
 template<typename N, typename M, typename P>
 struct suma_triple : int_constant< N::value+M::value+P::value >;
 
-/// Currificamos la metafuncion
+/// Currificamos la metafuncion suma
 using suma_c = hgs::curry_t<suma>;
 
 
