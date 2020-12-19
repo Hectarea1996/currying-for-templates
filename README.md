@@ -1,5 +1,15 @@
 # currying-for-templates
 
+## Instalación
+
+Sólo tienes que incluir el fichero "currytemp.h" a tu proyecto.
+
+## Requerimientos
+
+Se necesita el standard C++20.
+
+## Currificación y uso de la librería
+
 La currificación es la capacidad de una función de poder recibir los argumentos de uno en uno, de forma que para cada argumento se retorno una nueva función acepta el resto de argumento de la función original.
 
 Esta librería permite currificar de forma sencilla metafunciones en C++ que aceptan un número variable de argumentos 'type' y retorna otro 'type'. Un ejemplo sencillo es el siguiente:
