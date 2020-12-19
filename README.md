@@ -5,7 +5,7 @@ La currificación es la capacidad de una función de poder recibir los argumento
 Esta librería permite currificar de forma sencilla metafunciones en C++ que aceptan un número variable de argumentos 'type' y retorna otro 'type'. Un ejemplo sencillo es el siguiente:
 
 ```C++
-#include <type_traits>
+#include <type_traits>  // Para poder usar std::integral_constant
 #include "currytemp.h"
 
 /// Tipo de dato que representa un entero
@@ -14,7 +14,7 @@ using int_constant = std::integral_constant<int,k>;
 
 /// Metafuncion para sumar dos enteros
 template<typename N, typename M, typename P>
-struct suma_triple : std::int_constant< int , N::value+M::value+P::value >;
+struct suma_triple : int_constant< N::value+M::value+P::value >;
 
 /// Currificamos la metafuncion
 using suma_c = hgs::curry_t<suma>;
@@ -91,5 +91,52 @@ Pero claro, necesitamos contemplar las dos opciones a la vez. Algo imposible par
 
 > Es posible crear una metafuncion curry que sí contemple estas dos opciones, pero perderíamos la opción de proporcionar varios argumentos a la metafuncion resultante.
 
+## Ejemplo
 
+En el ejemplo se usa el tipo int_constant usado más arriba y un tipo de dato 'lista de tipos'. Se muestra la implementación de la función de [orden superior](https://es.wikipedia.org/wiki/Funci%C3%B3n_de_orden_superior) map_list y la usaremos para relizar una operación sobre cada tipo de la lista.
+
+```C++
+#include <type_traits>  // Para poder usar std::integral_constant
+#include "currytemp.h"
+
+
+
+/// Tipo que representa un entero
+template<int k>
+using int_constant = std::integral_constant<int,k>;
+
+/// Metafuncion para sumar dos enteros
+template<typename N, typename M>
+struct suma : int_constant<N::value+M::value>;
+
+// Currificamos la metafuncion suma
+using suma_c = hgs::curry<suma>;
+
+
+
+/// Tipo que guarda una cantidad variable de tipos
+template<typename... TS>
+struct lista{};
+
+/// Metafuncion que ejecuta una metafuncion perezosa sobre cada elemento de una lista 
+template<typename Func, typename List>
+struct map_list{};
+
+template<typename Func, typename... TS>
+struct map_list<Func,lista<TS...>>{
+   using type = lista<Func::type<TS>...>;
+}
+
+
+
+// Creamos una lista de enteros
+using lista_enteros = lista<int_constant<1>,int_constant<5>,int_constant<7>>;
+
+// Obtenemos nuevas listas usando map_list suma_c 
+using lista_enteros_mas4 = map_list< suma_c::type<int_constant<4>> , lista_enteros >;
+using lista_enteros_mas10 = map_list< suma_c::type<int_constant<10>> , lista_enteros >;
+
+```
+`lista_enteros_mas4 == lista_enteros<int_constant<5>,int_constant<9>,int_constant<11>>`
+`lista_enteros_mas10 == lista_enteros<int_constant<11>,int_constant<15>,int_constant<17>>`
 
