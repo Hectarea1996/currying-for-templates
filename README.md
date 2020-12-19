@@ -138,5 +138,6 @@ using lista_enteros_mas10 = map_list< suma_c::type<int_constant<10>> , lista_ent
 
 ```
 `lista_enteros_mas4 == lista_enteros<int_constant<5>,int_constant<9>,int_constant<11>>`
+
 `lista_enteros_mas10 == lista_enteros<int_constant<11>,int_constant<15>,int_constant<17>>`
 
