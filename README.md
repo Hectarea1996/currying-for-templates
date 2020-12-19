@@ -42,7 +42,7 @@ int main(){
 
 ## ¿Por qué una metafunción perezosa?
 
-Como se puede apreciar en el ejemplo de arriba, una metafunción perezosa recibe los argumentos una vez accedemos al interior del struct. Observa las diferencias:
+Como se puede apreciar en el ejemplo de arriba, una metafunción perezosa recibe los argumentos tras acceder al interior del struct. Observa las diferencias:
 
 ```C++
 /// Metafuncion normal
