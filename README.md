@@ -8,28 +8,29 @@ Esta librería permite currificar de forma sencilla metafunciones en C++ que ace
 #include <type_traits>
 #include "currytemp.h"
 
-// Tipo de dato que representa un entero
+/// Tipo de dato que representa un entero
 template<int k>
 using int_constant = std::integral_constant<int,k>;
 
-// Metafuncion para sumar dos enteros
+/// Metafuncion para sumar dos enteros
 template<typename N, typename M>
 struct suma : std::int_constant<int,N::value+M::value>;
 
-// Currificamos la metafuncion
+/// Currificamos la metafuncion
 using suma_c = hgs::curry_t<suma>;
 
 
-// Ejemplo de uso
+/// Ejemplo de uso
 using suma1_c = suma_c::type<int_constant<1>>;
 
-/*
+/**
 *   Observa que suma_c no es una metafuncion como tal.
 *   En realidad se trata de una 'metafuncion perezosa'.
 */
 
 int main(){
 
+   // Sumamos 1 a int_constant<41> y despues obtenemos el entero.
    std::cout << suma1_c::type<int_constant<41>>::value << std::endl;
    
    return 0;
