@@ -89,7 +89,7 @@ struct curry{
 
 Pero claro, necesitamos contemplar las dos opciones a la vez. Algo imposible para lo que buscamos. Como ya podrás observar, este problema no aparece con las metafunciones perezosas, pues curry sólo tiene que devolver un struct.
 
-> Es posible crear una metafuncion curry que sí contemple estas dos opciones, pero perderíamos la opción de proporcionar varios argumentos a la metafuncion resultante.
+> Es posible crear una metafuncion curry que sí contemple estas dos opciones, pero perderíamos la opción de proporcionar varios argumentos simultáneamente a la metafuncion resultante.
 
 ## Ejemplo
 
