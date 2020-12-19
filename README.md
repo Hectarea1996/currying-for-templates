@@ -132,7 +132,7 @@ struct map_list<Func,lista<TS...>>{
 // Creamos una lista de enteros
 using lista_enteros = lista<int_constant<1>,int_constant<5>,int_constant<7>>;
 
-// Obtenemos nuevas listas usando map_list suma_c 
+// Obtenemos nuevas listas usando map_list y suma_c 
 using lista_enteros_mas4 = map_list< suma_c::type<int_constant<4>> , lista_enteros >;
 using lista_enteros_mas10 = map_list< suma_c::type<int_constant<10>> , lista_enteros >;
 
