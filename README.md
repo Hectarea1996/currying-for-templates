@@ -27,6 +27,16 @@ using suma1_c = suma_c::type<int_constant<1>>;
 *   Observa que suma_c no es una metafuncion como tal.
 *   En realidad se trata de una 'metafuncion perezosa'.
 */
+
+int main(){
+
+   std::cout << suma1_c::type<int_constant<41>>::value << std::endl;
+   
+   return 0;
+
+}
 ```
+
+`Resultado: 42`
 
 ## Metafunciones perezosas
